@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerTestState : PlayerBaseState
 {
+    private float timer = 5f;
+
+    
     public PlayerTestState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -15,7 +18,16 @@ public class PlayerTestState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Debug.Log("Tick");    
+        timer -= deltaTime;
+         
+        Debug.Log(timer);
+
+        if (timer <= 0f)
+        {
+            //player state change
+            stateMachine.SwitchState(new PlayerTestState(stateMachine));
+            
+        }
     }
     
     public override void Exit()
