@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-    // Start is called before the first frame update
+    [field: SerializeField] public InputReader InputReader { get; private set; }
+
+
     public void Start()
     {
         SwitchState(new PlayerTestState(this));
