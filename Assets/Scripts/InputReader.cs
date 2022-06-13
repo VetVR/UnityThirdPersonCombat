@@ -38,7 +38,9 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed)
         {
+            Debug.Log("DODGE not performed!!!");
             return;
+            
         }
 
         DodgeEvent?.Invoke();

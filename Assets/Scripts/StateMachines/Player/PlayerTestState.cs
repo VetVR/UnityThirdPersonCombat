@@ -15,13 +15,13 @@ public class PlayerTestState : PlayerBaseState
     {
         Debug.Log("Entering");
         stateMachine.InputReader.JumpEvent += OnJump;
-        //stateMachine.InputReader.JumpEvent += OnDodge;
+        stateMachine.InputReader.JumpEvent += OnDodge;
     }
 
     public override void Tick(float deltaTime)
     {
         timer += deltaTime;
-        //Debug.Log(timer);
+        Debug.Log(timer);
 
     }
     
@@ -29,7 +29,7 @@ public class PlayerTestState : PlayerBaseState
     {
         Debug.Log("Exiting");
         stateMachine.InputReader.JumpEvent -= OnJump; 
-        //stateMachine.InputReader.JumpEvent -= OnDodge;
+        stateMachine.InputReader.JumpEvent -= OnDodge;
     }
 
     public void OnJump()
