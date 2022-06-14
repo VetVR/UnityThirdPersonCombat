@@ -56,5 +56,6 @@
     "editor.quickSuggestionsDelay": 2,
     "editor.suggest.localityBonus": true,
     "editor.suggest.preview": true,
-    "editor.wordBasedSuggestions": true
+    "editor.wordBasedSuggestions": true,
+    "omnisharp.disableMSBuildDiagnosticWarning": true
 }

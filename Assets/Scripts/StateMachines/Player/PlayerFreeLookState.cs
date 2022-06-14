@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFreeLookState : PlayerBaseState
 {
+    private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
     private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
     private const float AnimatorDampTime = 0.1f;
 
@@ -14,15 +15,21 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
-       
+        stateMachine.InputReader.TargetEvent += OnTarget;
+
+        stateMachine.Animator.Play(FreeLookBlendTreeHash);
+
     }
 
     public override void Tick(float deltaTime)
     {
         Vector3 movement = CalculateMovement();
+        //Debug.Log("Movement before move: " + movement);
+        Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
+        //Debug.Log("movement value sent to Move function: " + movement * stateMachine.FreeLookMovementSpeed);
+        //Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
+        //stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
 
-
-        stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
@@ -38,7 +45,16 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit()
     {
-        
+        stateMachine.InputReader.TargetEvent -= OnTarget;
+
+    }
+
+    private void OnTarget()
+    {
+        if (!stateMachine.Targeter.SelectTarget()) { return; }
+
+
+        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
     }
 
     private Vector3 CalculateMovement()
@@ -60,7 +76,7 @@ public class PlayerFreeLookState : PlayerBaseState
             stateMachine.transform.rotation,
             Quaternion.LookRotation(movement),
             deltaTime * stateMachine.RotationDamping);
-    }    
+    }
 
-    
+
 }
