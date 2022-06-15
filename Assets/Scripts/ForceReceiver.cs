@@ -12,7 +12,7 @@ public class ForceReceiver : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Is character grounded: " + controller.isGrounded);
+        //Debug.Log("Is character grounded: " + controller.isGrounded);
         if (verticalVelocity < 0f && controller.isGrounded)
         {
             verticalVelocity = Physics.gravity.y * Time.deltaTime;

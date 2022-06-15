@@ -24,12 +24,9 @@ public class PlayerFreeLookState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         Vector3 movement = CalculateMovement();
-        //Debug.Log("Movement before move: " + movement);
+        
         Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
-        //Debug.Log("movement value sent to Move function: " + movement * stateMachine.FreeLookMovementSpeed);
-        //Move(movement * stateMachine.FreeLookMovementSpeed, deltaTime);
-        //stateMachine.Controller.Move(movement * stateMachine.FreeLookMovementSpeed * deltaTime);
-
+        
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
             stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
