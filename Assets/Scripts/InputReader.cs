@@ -14,6 +14,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action CancelEvent;
 
     private Controls controls;
+    public bool IsAttacking { get; private set; }
 
     private void Start()
     {
@@ -78,5 +79,20 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             return;
         }
         CancelEvent?.Invoke();
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            IsAttacking = true;
+        }
+
+        else if (context.canceled)
+        {
+            IsAttacking = false;
+        }
+
+        
     }
 }
