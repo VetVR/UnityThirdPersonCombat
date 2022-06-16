@@ -8,6 +8,7 @@ public class PlayerAttackingState : PlayerBaseState
 
     private Attack attack;
     private float previousFrameTime;
+    private bool alreadyAppliedForce;
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
     {
         attack = stateMachine.Attacks[attackIndex];
@@ -25,8 +26,13 @@ public class PlayerAttackingState : PlayerBaseState
         
         float normalizedTime = GetNormalizedTime();
 
-        if (normalizedTime > previousFrameTime && normalizedTime < 1f)
+        if (normalizedTime >= previousFrameTime && normalizedTime < 1f)
         {
+            if (normalizedTime >= attack.ForceTime)
+            {
+                TryApplyForce();
+            }
+            
             if (stateMachine.InputReader.IsAttacking)
             {
                 TryComboAttack(normalizedTime);
@@ -34,7 +40,15 @@ public class PlayerAttackingState : PlayerBaseState
         }
         else
         {
-            //go back to locomotion
+            if (stateMachine.Targeter.CurrentTarget != null)
+            {
+                //go back to locomotion
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            }
+            else
+            {
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+            }
         }
         
         previousFrameTime = normalizedTime;
@@ -79,5 +93,14 @@ public class PlayerAttackingState : PlayerBaseState
         {
             return 0f;
         }
+    }
+
+    private void TryApplyForce()
+    {
+        if (alreadyAppliedForce) { return; }
+        
+        stateMachine.ForceReceiver.AddForce(stateMachine.transform.forward * attack.Force);
+
+        alreadyAppliedForce = true;
     }
 }
