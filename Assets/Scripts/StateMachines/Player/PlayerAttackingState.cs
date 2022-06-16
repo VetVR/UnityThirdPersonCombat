@@ -12,11 +12,14 @@ public class PlayerAttackingState : PlayerBaseState
     public PlayerAttackingState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine)
     {
         attack = stateMachine.Attacks[attackIndex];
+        
     }
 
     public override void Enter()
     {
+        stateMachine.Weapon.SetAttack(attack.Damage);
         stateMachine.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
+        
     }
 
     public override void Tick(float deltaTime)
@@ -53,9 +56,7 @@ public class PlayerAttackingState : PlayerBaseState
         
         previousFrameTime = normalizedTime;
     }
-
-
-
+    
     public override void Exit()
     {
         
