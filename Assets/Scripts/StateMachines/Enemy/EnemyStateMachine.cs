@@ -1,21 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStateMachine : StateMachine
 {
-    public void Enter()
-    {
-        
-    }
+    [field: SerializeField] public Animator Animator { get; private set; }
 
-    public void Tick(float deltaTime)
+    private void Start()
     {
-        
-    }
-
-    public void Exit()
-    {
-        
+        SwitchState(new EnemyIdleState(this));
     }
 }

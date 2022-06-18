@@ -10,4 +10,5 @@ public abstract class EnemyBaseState : State
     {
         this.stateMachine = stateMachine;
     }
+
 }
