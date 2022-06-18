@@ -24,16 +24,11 @@ public class EnemyIdleState : EnemyBaseState
 
         if (IsInChaseRange())
         {
-            Debug.Log("In Range");
+            //Debug.Log("In Range");
+            //Debug.Log("Entering Chase State and giving chase...");
+            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+            return;
         }
-        
-        // if (IsInChaseRange())
-        // {
-        //     Debug.Log("In Range");
-        //     //Transition to chasing state
-        //     return;
-        //     
-        // }
         
         stateMachine.Animator.SetFloat(SpeedHash, 0f, AnimatorDampTime, deltaTime);
     }
