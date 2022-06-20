@@ -20,7 +20,20 @@ public abstract class EnemyBaseState : State
     protected void Move(Vector3 motion, float deltaTime)
     {
         stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);   
-    }    
+    }
+
+    protected void FacePlayer()
+    {
+        Quaternion currentRotation = stateMachine.transform.rotation;
+        
+        if (stateMachine.Player == null) { return; }
+
+        Vector3 lookPos = stateMachine.Player.transform.position - stateMachine.transform.position;
+        lookPos.y = 0f;
+      
+        stateMachine.transform.rotation = Quaternion.Slerp(currentRotation, Quaternion.LookRotation(lookPos),30f * Time.deltaTime);
+        //stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
+    }
     
     protected bool IsInChaseRange()
     {
