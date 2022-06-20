@@ -8,6 +8,7 @@ public class WeaponDamage : MonoBehaviour
     [SerializeField] private Collider myCollider;
 
     private int damage;
+    private float knockback;
     
     private List<Collider> alreadyCollidedWith = new List<Collider>();
 
@@ -30,12 +31,19 @@ public class WeaponDamage : MonoBehaviour
             
             health.DealDamage(damage);
         }
+
+        if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+        {
+            Vector3 direction = (other.transform.position - myCollider.transform.position.normalized);
+            forceReceiver.AddForce(direction * knockback);
+        }
         
     }
 
-    public void SetAttack(int attackDamage)
+    public void SetAttack(int attackDamage, float knockback)
     {
         this.damage = attackDamage;
-        Debug.Log("We are attacking for: " + attackDamage + " Damage");
+        //Debug.Log("We are attacking for: " + attackDamage + " Damage");
+        this.knockback = knockback;
     }
 }

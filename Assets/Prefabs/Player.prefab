@@ -1426,13 +1426,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3606367293113754914}
-  - component: {fileID: 6586071948310173770}
   - component: {fileID: 3493456731138355816}
   - component: {fileID: 2616206762883342145}
   - component: {fileID: 2382036160582409162}
   - component: {fileID: 1297149912056183130}
   - component: {fileID: 6726209260574347953}
   - component: {fileID: 1036582603370066745}
+  - component: {fileID: 6586071948310173770}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1462,49 +1462,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6586071948310173770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4127464801982070680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de4e328a8f10374cb3c90f34cb96e61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <InputReader>k__BackingField: {fileID: 3493456731138355816}
-  <Controller>k__BackingField: {fileID: 2382036160582409162}
-  <Animator>k__BackingField: {fileID: 2616206762883342145}
-  <Targeter>k__BackingField: {fileID: 3924769156911883887}
-  <ForceReceiver>k__BackingField: {fileID: 1297149912056183130}
-  <FreeLookMovementSpeed>k__BackingField: 6
-  <TargetingMovementSpeed>k__BackingField: 5
-  <RotationDamping>k__BackingField: 8.6
-  <Attacks>k__BackingField:
-  - <AnimationName>k__BackingField: Attack1
-    <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 1
-    <ComboAttackTime>k__BackingField: 0.6
-    <ForceTime>k__BackingField: 0.35
-    <Force>k__BackingField: 15
-    <Damage>k__BackingField: 10
-  - <AnimationName>k__BackingField: Attack2
-    <TransitionDuration>k__BackingField: 0.1
-    <ComboStateIndex>k__BackingField: 2
-    <ComboAttackTime>k__BackingField: 0.5
-    <ForceTime>k__BackingField: 0.35
-    <Force>k__BackingField: 15
-    <Damage>k__BackingField: 15
-  - <AnimationName>k__BackingField: Attack3
-    <TransitionDuration>k__BackingField: 0.2
-    <ComboStateIndex>k__BackingField: -1
-    <ComboAttackTime>k__BackingField: 0
-    <ForceTime>k__BackingField: 0.35
-    <Force>k__BackingField: 20
-    <Damage>k__BackingField: 20
-  <Weapon>k__BackingField: {fileID: 4550595245927324307}
 --- !u!114 &3493456731138355816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,6 +1525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2382036160582409162}
+  agent: {fileID: 0}
   drag: 0.1
 --- !u!114 &6726209260574347953
 MonoBehaviour:
@@ -1595,6 +1553,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &6586071948310173770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127464801982070680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de4e328a8f10374cb3c90f34cb96e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <InputReader>k__BackingField: {fileID: 3493456731138355816}
+  <Controller>k__BackingField: {fileID: 2382036160582409162}
+  <Animator>k__BackingField: {fileID: 2616206762883342145}
+  <Targeter>k__BackingField: {fileID: 3924769156911883887}
+  <ForceReceiver>k__BackingField: {fileID: 1297149912056183130}
+  <FreeLookMovementSpeed>k__BackingField: 6
+  <TargetingMovementSpeed>k__BackingField: 5
+  <RotationDamping>k__BackingField: 8.6
+  <Weapon>k__BackingField: {fileID: 4550595245927324307}
+  <Attacks>k__BackingField:
+  - <AnimationName>k__BackingField: Attack1
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.6
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
+    <Knockback>k__BackingField: 15
+    <Damage>k__BackingField: 10
+  - <AnimationName>k__BackingField: Attack2
+    <TransitionDuration>k__BackingField: 0.1
+    <ComboStateIndex>k__BackingField: 2
+    <ComboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 15
+    <Knockback>k__BackingField: 20
+    <Damage>k__BackingField: 15
+  - <AnimationName>k__BackingField: Attack3
+    <TransitionDuration>k__BackingField: 0.2
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0
+    <ForceTime>k__BackingField: 0.35
+    <Force>k__BackingField: 20
+    <Knockback>k__BackingField: 25
+    <Damage>k__BackingField: 20
 --- !u!1 &4216453455003278531
 GameObject:
   m_ObjectHideFlags: 0
