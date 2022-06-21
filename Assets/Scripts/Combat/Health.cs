@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     private int health;
 
     public event Action OnTakeDamage;
+    public event Action OnDie;
     
     
     private void Start()
@@ -28,6 +29,14 @@ public class Health : MonoBehaviour
         
         Debug.Log(health);
         
+        if (health == 0)
+        {
+            Debug.Log("Target is DEAD!");
+            OnDie?.Invoke();
+        }
+        
     }
+
+
 
 }
