@@ -31,6 +31,12 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
+        if (stateMachine.InputReader.IsBlocking)
+        {
+            stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
+            return;
+        }
+
         Vector3 movement = CalculateMovement();
         
         Move(movement * stateMachine.TargetingMovementSpeed, deltaTime);
