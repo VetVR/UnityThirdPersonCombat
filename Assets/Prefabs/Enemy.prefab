@@ -537,8 +537,9 @@ MonoBehaviour:
   <Weapon>k__BackingField: {fileID: 1914160185609665928}
   <MovementSpeed>k__BackingField: 3
   <PlayerChasingRange>k__BackingField: 10
-  <AttackRange>k__BackingField: 1.5
+  <AttackRange>k__BackingField: 1.25
   <AttackDamage>k__BackingField: 20
+  <Health>k__BackingField: {fileID: 2472908341665802784}
   <AttackKnockback>k__BackingField: 15
 --- !u!114 &2906646615976713773
 MonoBehaviour:

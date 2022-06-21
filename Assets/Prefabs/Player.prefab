@@ -1574,6 +1574,7 @@ MonoBehaviour:
   <TargetingMovementSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 8.6
   <Weapon>k__BackingField: {fileID: 4550595245927324307}
+  <Health>k__BackingField: {fileID: 1036582603370066745}
   <Attacks>k__BackingField:
   - <AnimationName>k__BackingField: Attack1
     <TransitionDuration>k__BackingField: 0.1
