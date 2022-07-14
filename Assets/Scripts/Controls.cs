@@ -126,7 +126,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""49ae7af1-0d1b-46cf-a95c-eb50715c7980"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse & Keyboard"",

@@ -44,7 +44,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed)
         {
-            Debug.Log("DODGE not performed!!!");
+            Debug.Log("DODGE performed!!!");
             return;
             
         }

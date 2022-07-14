@@ -1890,6 +1890,9 @@ MonoBehaviour:
   <FreeLookMovementSpeed>k__BackingField: 6
   <TargetingMovementSpeed>k__BackingField: 5
   <RotationDamping>k__BackingField: 8.6
+  <DodgeDuration>k__BackingField: 0.1
+  <DodgeCooldown>k__BackingField: 1
+  <DodgeLength>k__BackingField: 0.8
   <Weapon>k__BackingField: {fileID: 4550595245927324307}
   <Health>k__BackingField: {fileID: 1036582603370066745}
   <Ragdoll>k__BackingField: {fileID: 664166991947297922}
